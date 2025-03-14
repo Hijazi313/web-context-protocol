@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Form Assistance Example</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Smart Form Assistant</h1>
+      <div class="privacy-controls">
+        <label for="privacy-level">Privacy Level:</label>
+        <select id="privacy-level">
+          <option value="strict" selected>Strict</option>
+          <option value="balanced">Balanced</option>
+          <option value="permissive">Permissive</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="form-section">
+        <div class="form-container">
+          <h2>Registration Form</h2>
+          <p class="form-description">Fill out the form below to create an account. Fields marked with * are required.</p>
+          
+          <form id="registration-form">
+            <!-- Personal Information Section -->
+            <fieldset>
+              <legend>Personal Information</legend>
+              
+              <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div class="assistance-container" data-assistance-for="fullName"></div>
+                <div class="validation-container" data-validation-for="fullName"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+                <div class="assistance-container" data-assistance-for="email"></div>
+                <div class="validation-container" data-validation-for="email"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+                <div class="assistance-container" data-assistance-for="phone"></div>
+                <div class="validation-container" data-validation-for="phone"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="birthdate">Date of Birth</label>
+                <input type="date" id="birthdate" name="birthdate">
+                <div class="assistance-container" data-assistance-for="birthdate"></div>
+                <div class="validation-container" data-validation-for="birthdate"></div>
+              </div>
+            </fieldset>
+            
+            <!-- Account Information Section -->
+            <fieldset>
+              <legend>Account Information</legend>
+              
+              <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" required>
+                <div class="assistance-container" data-assistance-for="username"></div>
+                <div class="validation-container" data-validation-for="username"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" required>
+                <div class="assistance-container" data-assistance-for="password"></div>
+                <div class="validation-container" data-validation-for="password"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password *</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="assistance-container" data-assistance-for="confirmPassword"></div>
+                <div class="validation-container" data-validation-for="confirmPassword"></div>
+              </div>
+            </fieldset>
+            
+            <!-- Address Section -->
+            <fieldset>
+              <legend>Address</legend>
+              
+              <div class="form-group">
+                <label for="streetAddress">Street Address</label>
+                <input type="text" id="streetAddress" name="streetAddress">
+                <div class="assistance-container" data-assistance-for="streetAddress"></div>
+                <div class="validation-container" data-validation-for="streetAddress"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city">
+                <div class="assistance-container" data-assistance-for="city"></div>
+                <div class="validation-container" data-validation-for="city"></div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="state">State/Province</label>
+                  <select id="state" name="state">
+                    <option value="">Select State</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="NY">New York</option>
+                    <option value="TX">Texas</option>
+                    <option value="WA">Washington</option>
+                    <!-- More states would be added in a real application -->
+                  </select>
+                  <div class="assistance-container" data-assistance-for="state"></div>
+                  <div class="validation-container" data-validation-for="state"></div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="zipCode">Zip/Postal Code</label>
+                  <input type="text" id="zipCode" name="zipCode">
+                  <div class="assistance-container" data-assistance-for="zipCode"></div>
+                  <div class="validation-container" data-validation-for="zipCode"></div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                  <option value="">Select Country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="AU">Australia</option>
+                  <!-- More countries would be added in a real application -->
+                </select>
+                <div class="assistance-container" data-assistance-for="country"></div>
+                <div class="validation-container" data-validation-for="country"></div>
+              </div>
+            </fieldset>
+            
+            <!-- Preferences Section -->
+            <fieldset>
+              <legend>Preferences</legend>
+              
+              <div class="form-group">
+                <label>Communication Preferences</label>
+                <div class="checkbox-group">
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="emailUpdates" name="communication" value="email">
+                    <label for="emailUpdates">Email Updates</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="smsUpdates" name="communication" value="sms">
+                    <label for="smsUpdates">SMS Updates</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="phoneUpdates" name="communication" value="phone">
+                    <label for="phoneUpdates">Phone Calls</label>
+                  </div>
+                </div>
+                <div class="assistance-container" data-assistance-for="communication"></div>
+                <div class="validation-container" data-validation-for="communication"></div>
+              </div>
+              
+              <div class="form-group">
+                <label>Interests</label>
+                <div class="checkbox-group">
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="technology" name="interests" value="technology">
+                    <label for="technology">Technology</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="sports" name="interests" value="sports">
+                    <label for="sports">Sports</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="music" name="interests" value="music">
+                    <label for="music">Music</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="travel" name="interests" value="travel">
+                    <label for="travel">Travel</label>
+                  </div>
+                </div>
+                <div class="assistance-container" data-assistance-for="interests"></div>
+                <div class="validation-container" data-validation-for="interests"></div>
+              </div>
+            </fieldset>
+            
+            <!-- Terms and Submission -->
+            <fieldset>
+              <legend>Terms and Submission</legend>
+              
+              <div class="form-group">
+                <div class="checkbox-item terms-checkbox">
+                  <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                  <label for="termsAgreement">I agree to the <a href="#" class="terms-link">Terms and Conditions</a> *</label>
+                </div>
+                <div class="validation-container" data-validation-for="termsAgreement"></div>
+              </div>
+              
+              <div class="form-actions">
+                <button type="button" id="validate-form" class="secondary-button">Validate Form</button>
+                <button type="submit" id="submit-form" class="primary-button">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <aside class="assistance-panel">
+        <h3>Form Assistance</h3>
+        <div class="privacy-notice">
+          <p>Privacy Level: <span id="current-privacy-level">Strict</span></p>
+          <p id="privacy-description">Form values will not be included in context.</p>
+        </div>
+        
+        <div class="assistance-section">
+          <h4>Field Assistance</h4>
+          <p>Click on a field to get assistance or start typing to see suggestions.</p>
+          <div id="field-assistance" class="assistance-content">
+            <p class="empty-message">Select a field to see assistance here.</p>
+          </div>
+        </div>
+        
+        <div class="context-info">
+          <h4>Context Information</h4>
+          <div id="context-details" class="context-details">
+            <p>Context details will appear here when interacting with the form.</p>
+          </div>
+        </div>
+        
+        <div class="help-section">
+          <h4>Need Help?</h4>
+          <button id="help-button" class="help-button">Get Form Assistance</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p>This is a demo application showcasing the Model Context Protocol for form assistance.</p>
+    <p>Powered by the <a href="https://github.com/yourusername/mcp" target="_blank">Model Context Protocol</a></p>
+  </footer>
+</body>
+</html> 

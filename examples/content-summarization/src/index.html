@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Content Summarization Example</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>MCP Content Summarization</h1>
+    <p>This example demonstrates how to use the Model Context Protocol to summarize web content.</p>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="content-panel">
+        <h2>Sample Content</h2>
+        <div class="content-controls">
+          <button id="load-article-1">Article 1</button>
+          <button id="load-article-2">Article 2</button>
+          <button id="load-article-3">Article 3</button>
+        </div>
+        <div id="content-area" class="content-area">
+          <p>Click one of the buttons above to load sample content.</p>
+        </div>
+      </div>
+
+      <div class="summary-panel">
+        <h2>Content Summary</h2>
+        <div class="summary-controls">
+          <button id="summarize-btn" disabled>Summarize Content</button>
+          <select id="privacy-level">
+            <option value="strict">Strict Privacy</option>
+            <option value="balanced" selected>Balanced Privacy</option>
+            <option value="permissive">Permissive Privacy</option>
+          </select>
+        </div>
+        <div id="summary-area" class="summary-area">
+          <p>Summary will appear here after you load content and click "Summarize Content".</p>
+        </div>
+        <div id="context-info" class="context-info">
+          <h3>Context Information</h3>
+          <div id="context-details">
+            <p>Context details will appear here after summarization.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Powered by the <a href="https://github.com/yourusername/mcp" target="_blank">Model Context Protocol</a></p>
+  </footer>
+</body>
+</html> 

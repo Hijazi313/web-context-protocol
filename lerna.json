@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish %s",
+      "allowBranch": ["main", "next"]
+    },
+    "publish": {
+      "conventionalCommits": true,
+      "message": "chore(release): publish %s"
+    },
+    "bootstrap": {
+      "hoist": true,
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  }
+} 

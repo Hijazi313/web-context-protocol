@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP E-commerce Recommendations Example</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>TechShop</h1>
+      <nav>
+        <ul>
+          <li><a href="#" data-category="all" class="active">All Products</a></li>
+          <li><a href="#" data-category="laptops">Laptops</a></li>
+          <li><a href="#" data-category="smartphones">Smartphones</a></li>
+          <li><a href="#" data-category="accessories">Accessories</a></li>
+        </ul>
+      </nav>
+      <div class="privacy-controls">
+        <label for="privacy-level">Privacy Level:</label>
+        <select id="privacy-level">
+          <option value="strict">Strict</option>
+          <option value="balanced" selected>Balanced</option>
+          <option value="permissive">Permissive</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="products-section">
+        <h2>Products</h2>
+        <div id="products-grid" class="products-grid">
+          <!-- Products will be dynamically inserted here -->
+          <div class="loading">Loading products...</div>
+        </div>
+      </section>
+
+      <section id="product-detail" class="product-detail hidden">
+        <button id="back-button" class="back-button">← Back to Products</button>
+        <div class="product-detail-content">
+          <!-- Product details will be dynamically inserted here -->
+        </div>
+        <div class="recommendations-section">
+          <h3>Recommended for You</h3>
+          <div id="recommendations-container" class="recommendations-container">
+            <!-- Recommendations will be dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+
+      <aside class="user-activity">
+        <h3>Your Activity</h3>
+        <div class="privacy-notice">
+          <p>Privacy Level: <span id="current-privacy-level">Balanced</span></p>
+          <p id="privacy-description">Some browsing data is collected with personal information redacted.</p>
+        </div>
+        <div class="browsing-history">
+          <h4>Recently Viewed</h4>
+          <ul id="viewed-products">
+            <!-- Viewed products will be dynamically inserted here -->
+            <li class="empty-message">No products viewed yet</li>
+          </ul>
+        </div>
+        <div class="context-info">
+          <h4>Context Information</h4>
+          <div id="context-details" class="context-details">
+            <p>Context details will appear here after viewing products.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <p>This is a demo application showcasing the Model Context Protocol for e-commerce recommendations.</p>
+    <p>Powered by the <a href="https://github.com/yourusername/mcp" target="_blank">Model Context Protocol</a></p>
+  </footer>
+</body>
+</html> 
