@@ -1,0 +1,120 @@
+# MCP Project Rules and Conventions
+
+## 1. Commit Message Rules
+
+All commits MUST follow the conventional commits specification with additional project-specific requirements.
+
+### Format
+```
+<type>(<scope>): <short summary>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+### Requirements
+
+1. Summary Line:
+   - Max 50 characters
+   - Format: `<type>(<scope>): <short summary>`
+   - No period at end
+   - Must be in present tense
+
+2. Allowed Types:
+   - feat: New features
+   - fix: Bug fixes
+   - docs: Documentation only
+   - style: Style/formatting
+   - refactor: Code restructuring
+   - test: Test additions/updates
+   - chore: Maintenance work
+   - build: Build system changes
+   - perf: Performance improvements
+   - ci: CI configuration
+
+3. Standard Scopes:
+   - auth
+   - users
+   - database
+   - config
+   - services
+   - controllers
+   - middleware
+   - scripts
+   - tests
+   - docs
+
+4. Body Format:
+   - Wrap at 72 characters
+   - Must include sections:
+     - What: Changes made
+     - Why: Reason for changes
+     - How: Implementation details
+     - Notes: Additional context
+
+5. Footer Rules:
+   - BREAKING CHANGE: Must be capitalized
+   - Issue references: Use "Fixes #123" or "Closes #123"
+   - Include migration steps if needed
+
+## 2. Code Organization Rules
+
+1. File Structure:
+   - One component per file
+   - Related files in feature directories
+   - Shared utilities in common/utils
+   - Tests adjacent to implementation
+
+2. Naming Conventions:
+   - PascalCase: Classes, Interfaces, Types
+   - camelCase: Variables, Functions, Methods
+   - UPPER_SNAKE: Constants
+   - kebab-case: File names, Directories
+
+3. Import Order:
+   - External dependencies
+   - Internal modules
+   - Relative imports
+   - Style imports
+
+## 3. Documentation Rules
+
+1. All public APIs must have JSDoc comments
+2. README.md required for each package
+3. CHANGELOG.md must be maintained
+4. Architecture decisions in ADR format
+
+## 4. Testing Rules
+
+1. Unit tests required for:
+   - All business logic
+   - Complex functions
+   - Bug fixes
+2. Integration tests for API endpoints
+3. E2E tests for critical paths
+4. Min 80% code coverage
+
+## 5. Code Review Rules
+
+1. Two approvals required
+2. All CI checks must pass
+3. No merge if conversations unresolved
+4. Update documentation if needed
+
+## 6. Branch Management
+
+1. Branch naming:
+   - feature/: New features
+   - fix/: Bug fixes
+   - docs/: Documentation
+   - chore/: Maintenance
+2. Rebase before merge
+3. Squash commits on merge
+
+## 7. Security Rules
+
+1. No secrets in code
+2. Use environment variables
+3. Regular dependency updates
+4. Security scan before release 
