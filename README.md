@@ -23,6 +23,7 @@ The MCP is organized as a monorepo with the following packages:
 - **[@mcp/privacy](./packages/privacy)**: Privacy filtering and PII detection.
 - **[@mcp/processing](./packages/processing)**: Context processing and transformation.
 - **[@mcp/model](./packages/model)**: Model integration and API.
+- **[@mcp/extension](./packages/extension)**: Browser extension for enabling MCP on any website.
 
 ## Example Applications
 
@@ -38,6 +39,25 @@ Each example includes:
 - Detailed documentation
 - Implementation analysis
 - Privacy controls demonstration
+
+## Browser Extension
+
+The MCP Browser Extension enables MCP functionality on any website, even those that don't already use it. It provides:
+
+- **Universal MCP Support**: Inject MCP into any website
+- **Privacy Controls**: Adjust privacy levels globally or per-site
+- **Site-Specific Settings**: Configure different settings for different websites
+- **User-Friendly Interface**: Easy-to-use popup and options pages
+
+### Using the Extension
+
+1. Build the extension: `cd packages/extension && npm run build`
+2. Load it in Chrome:
+   - Navigate to `chrome://extensions`
+   - Enable "Developer mode"
+   - Click "Load unpacked" and select the `dist` directory
+
+For more details, see the [extension documentation](./packages/extension/README.md).
 
 ## Installation
 

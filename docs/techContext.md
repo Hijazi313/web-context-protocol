@@ -1,210 +1,294 @@
 # Model Context Protocol - Technical Context
 
-This document outlines the technical context of the Model Context Protocol (MCP) project, including technologies used, dependencies, and development environment.
+This document provides technical context for the Model Context Protocol (MCP) project, including technologies used, development environment, and technical decisions.
 
-## Technologies
+## Technology Stack
 
 ### Core Technologies
 
-- **TypeScript**: The primary language used for development, providing static typing and modern JavaScript features.
-- **JavaScript (ES2020+)**: The target language for browser compatibility.
-- **Node.js**: The runtime environment for development and building.
-- **npm/Yarn**: Package managers for dependency management.
+- **TypeScript**: Primary programming language
+- **JavaScript**: Target language for browser compatibility
+- **HTML/CSS**: For example applications and documentation
+- **JSON**: For configuration and data interchange
 
 ### Build Tools
 
-- **Lerna**: Monorepo management tool for versioning and publishing.
-- **Rollup**: Module bundler for creating optimized distribution bundles.
-- **TypeScript Compiler**: For type checking and transpilation.
-- **Babel**: For additional transpilation features when needed.
-- **ESLint**: For code quality and style enforcement.
-- **Prettier**: For consistent code formatting.
+- **Lerna**: Monorepo management
+- **Rollup**: Module bundling for packages
+- **Webpack**: Bundling for example applications and browser extension
+- **TypeScript Compiler**: Static type checking and transpilation
+- **ESLint**: Code quality and style enforcement
+- **Prettier**: Code formatting
+- **Jest**: Testing framework
 
-### Testing Tools
+### Development Environment
 
-- **Jest**: Testing framework for unit and integration tests.
-- **Testing Library**: For DOM testing utilities.
-- **ts-jest**: TypeScript preprocessor for Jest.
-- **Sinon**: For mocks, stubs, and spies in tests.
+- **Node.js**: JavaScript runtime for development
+- **npm**: Package management
+- **Git**: Version control
+- **GitHub**: Repository hosting and collaboration
+- **VS Code**: Recommended editor with TypeScript support
 
-### Development Tools
+### Browser APIs
 
-- **Visual Studio Code**: Recommended IDE with TypeScript integration.
-- **Chrome DevTools**: For debugging and performance profiling.
-- **npm Scripts**: For common development tasks.
-- **Husky**: For Git hooks to enforce quality checks.
-- **lint-staged**: For running linters on staged files.
+- **DOM API**: For DOM context acquisition
+- **MutationObserver**: For tracking DOM changes
+- **IntersectionObserver**: For tracking element visibility
+- **History API**: For tracking navigation
+- **Storage API**: For persisting settings
+- **Web Workers**: For performance-intensive operations
 
-## Dependencies
+### Browser Extension APIs
 
-### Production Dependencies
+- **WebExtension API**: Cross-browser extension development
+- **Chrome Extension API**: Chrome-specific functionality
+- **Firefox Add-on API**: Firefox-specific functionality
+- **Content Scripts**: For injecting MCP into web pages
+- **Background Scripts**: For managing extension state
+- **Storage API**: For persisting extension settings
+- **Message Passing API**: For communication between extension components
+- **DevTools API**: For creating developer tools panels
 
-#### Core Package
+## Package Structure
 
-- **typescript**: TypeScript language support
-- **tslib**: Runtime library for TypeScript helpers
+The MCP project is organized as a monorepo with the following packages:
 
-#### Browser Package
+### Core Packages
 
-- **@mcp/core**: Core interfaces and utilities
-- **mutation-observer**: Polyfill for MutationObserver API
-- **resize-observer-polyfill**: Polyfill for ResizeObserver API
+- **@mcp/core**: Core interfaces, types, and utilities
+- **@mcp/browser**: Browser-specific context acquisition
+- **@mcp/privacy**: Privacy filtering and PII protection
+- **@mcp/processing**: Context processing and transformation
+- **@mcp/model**: Model integration and action execution
 
-#### Privacy Package
+### Extension Package
 
-- **@mcp/core**: Core interfaces and utilities
-- **pii-filter**: Library for PII detection and redaction
+- **@mcp/extension**: Browser extension for MCP integration
 
-#### Processing Package
+### Example Applications
 
-- **@mcp/core**: Core interfaces and utilities
-- **@mcp/privacy**: Privacy filtering utilities
+- **content-summarization**: Example of content summarization
+- **ecommerce-recommendations**: Example of e-commerce recommendations
+- **form-assistance**: Example of form assistance
 
-#### Model Package
-
-- **@mcp/core**: Core interfaces and utilities
-- **@mcp/processing**: Context processing utilities
-
-### Development Dependencies
-
-- **@rollup/plugin-typescript**: TypeScript support for Rollup
-- **@rollup/plugin-node-resolve**: Node.js module resolution for Rollup
-- **@rollup/plugin-commonjs**: CommonJS module support for Rollup
-- **rollup-plugin-terser**: Minification for Rollup bundles
-- **@types/jest**: TypeScript definitions for Jest
-- **jest**: Testing framework
-- **ts-jest**: TypeScript support for Jest
-- **eslint**: Linting utility
-- **@typescript-eslint/eslint-plugin**: TypeScript rules for ESLint
-- **@typescript-eslint/parser**: TypeScript parser for ESLint
-- **prettier**: Code formatting
-- **eslint-config-prettier**: ESLint configuration for Prettier
-- **eslint-plugin-prettier**: ESLint plugin for Prettier
-- **husky**: Git hooks
-- **lint-staged**: Run linters on staged files
-
-## Development Environment
-
-### Requirements
-
-- Node.js v14.0.0 or higher
-- npm v6.0.0 or higher or Yarn v1.22.0 or higher
-- Git
+## Development Workflow
 
 ### Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mcp.git
-cd mcp
+git clone https://github.com/example/mcp.git
 
 # Install dependencies
+cd mcp
 npm install
 
-# Bootstrap the monorepo
+# Bootstrap packages
 npx lerna bootstrap
-
-# Build all packages
-npm run build
 ```
 
-### Development Workflow
-
-1. **Setup**: Clone the repository and install dependencies.
-2. **Branch**: Create a feature branch for your work.
-3. **Develop**: Make changes to the codebase.
-4. **Test**: Run tests to ensure your changes work as expected.
-5. **Lint**: Run linters to ensure code quality.
-6. **Build**: Build the packages to ensure they compile correctly.
-7. **Commit**: Commit your changes with a descriptive message.
-8. **Push**: Push your changes to the remote repository.
-9. **PR**: Create a pull request for review.
-
-### Common Commands
+### Build
 
 ```bash
-# Install dependencies
-npm install
-
-# Bootstrap the monorepo
-npx lerna bootstrap
-
 # Build all packages
 npm run build
 
-# Build a specific package
-npx lerna run build --scope=@mcp/core
+# Build specific package
+npm run build --scope=@mcp/core
 
-# Run tests
+# Build in watch mode
+npm run dev
+```
+
+### Test
+
+```bash
+# Run all tests
 npm test
 
-# Run tests for a specific package
-npx lerna run test --scope=@mcp/core
+# Run tests for specific package
+npm test --scope=@mcp/core
 
-# Lint code
+# Run tests in watch mode
+npm test -- --watch
+```
+
+### Lint
+
+```bash
+# Lint all packages
 npm run lint
+
+# Lint specific package
+npm run lint --scope=@mcp/core
 
 # Fix linting issues
 npm run lint:fix
+```
 
-# Clean build artifacts
-npm run clean
+### Release
 
-# Publish packages (for maintainers)
+```bash
+# Create a new release
+npx lerna version
+
+# Publish packages
 npx lerna publish
 ```
 
+## Browser Extension Development
+
+### Setup
+
+```bash
+# Build the extension
+npm run build:extension
+
+# Build in watch mode
+npm run build:extension:watch
+```
+
+### Loading in Chrome
+
+1. Open Chrome and navigate to `chrome://extensions`
+2. Enable "Developer mode"
+3. Click "Load unpacked"
+4. Select the `packages/extension/dist` directory
+
+### Loading in Firefox
+
+1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
+2. Click "Load Temporary Add-on..."
+3. Select the `packages/extension/dist/manifest.json` file
+
+### Extension Architecture
+
+The browser extension is structured as follows:
+
+1. **Background Script**: Manages state and coordinates between components
+
+   - Handles extension lifecycle events
+   - Manages global and site-specific settings
+   - Coordinates communication between components
+
+2. **Content Script**: Injects MCP into web pages
+
+   - Injects the MCP library into web pages
+   - Captures context from the page
+   - Applies privacy filters
+   - Communicates with the background script
+
+3. **Popup UI**: Provides quick access to settings
+
+   - Displays current site settings
+   - Allows toggling MCP on/off
+   - Provides privacy level selection
+   - Shows basic context statistics
+
+4. **Options Page**: Provides comprehensive configuration
+
+   - Manages global settings
+   - Configures site-specific settings
+   - Provides advanced privacy controls
+   - Offers debugging tools
+
+5. **DevTools Panel**: Provides developer tools
+   - Visualizes context data
+   - Provides debugging information
+   - Allows testing different privacy levels
+   - Shows performance metrics
+
+## Technical Decisions
+
+### TypeScript
+
+TypeScript was chosen for:
+
+- **Type Safety**: Catch errors at compile time
+- **Developer Experience**: Better tooling and IDE support
+- **Documentation**: Self-documenting code through types
+- **Maintainability**: Easier refactoring and code navigation
+
+### Monorepo Structure
+
+A monorepo structure was chosen for:
+
+- **Simplified Dependency Management**: Shared dependencies
+- **Atomic Changes**: Changes across packages in a single commit
+- **Consistent Tooling**: Shared configuration and scripts
+- **Simplified Testing**: Test across package boundaries
+
+### Browser Extension
+
+A browser extension was developed to:
+
+- **Provide User Control**: Give users control over MCP settings
+- **Enable Universal Integration**: Allow MCP to work on any website
+- **Offer Developer Tools**: Provide tools for debugging and visualization
+- **Enhance Privacy**: Give users granular privacy controls
+
+### Privacy-First Design
+
+Privacy is a core concern:
+
+- **Configurable Privacy Levels**: Different levels for different needs
+- **PII Detection and Redaction**: Automatic protection of sensitive information
+- **User Control**: Users can control what information is shared
+- **Transparency**: Clear indication of what information is being captured
+
+### Performance Optimization
+
+Performance is optimized through:
+
+- **Throttling and Debouncing**: Limit the frequency of context updates
+- **Selective Context Capture**: Only capture relevant context
+- **DOM Tree Pruning**: Remove irrelevant parts of the DOM tree
+- **Lazy Initialization**: Initialize components only when needed
+- **Caching**: Cache context to avoid redundant processing
+
 ## Browser Compatibility
 
-The MCP is designed to work with modern browsers:
+The MCP is designed to work with:
 
-- Chrome 60+
-- Firefox 55+
-- Safari 11+
-- Edge 79+
+- **Chrome**: Version 80+
+- **Firefox**: Version 78+
+- **Edge**: Version 80+ (Chromium-based)
+- **Safari**: Version 14+ (with limitations)
 
-Polyfills are included for:
+The browser extension currently supports:
 
-- MutationObserver
-- ResizeObserver
-- Promise
-- fetch
-- Object.assign
-- Array.from
-
-## Performance Considerations
-
-- **Bundle Size**: The packages are designed to be tree-shakable to minimize bundle size.
-- **Runtime Performance**: Performance-critical operations are optimized.
-- **Memory Usage**: Care is taken to avoid memory leaks and excessive memory usage.
-- **Network Usage**: Context updates are throttled to minimize network usage.
+- **Chrome**: Primary target platform
+- **Firefox**: Support in progress
+- **Edge**: Compatible with Chrome extension
 
 ## Security Considerations
 
-- **Content Security Policy (CSP)**: The MCP is designed to work with strict CSP.
-- **Cross-Origin Resource Sharing (CORS)**: The MCP respects CORS restrictions.
-- **Privacy**: PII is handled according to privacy best practices.
-- **Permissions**: The MCP uses a permission system to control access to features.
+Security measures include:
 
-## Deployment
+- **Content Security Policy**: Prevent XSS attacks
+- **Secure Communication**: Use secure messaging between components
+- **Permission Minimization**: Request only necessary permissions
+- **Data Minimization**: Capture only necessary context
+- **Isolation**: Isolate extension components from each other
 
-The packages are published to npm with the `@mcp` scope:
+## Performance Considerations
 
-```bash
-# Install from npm
-npm install @mcp/core @mcp/browser
-```
+Performance optimizations include:
 
-CDN links are also available:
+- **Throttled Context Updates**: Limit update frequency
+- **Selective DOM Traversal**: Only traverse relevant parts of the DOM
+- **Efficient Data Structures**: Use efficient data structures for context
+- **Lazy Loading**: Load components only when needed
+- **Background Processing**: Process context in background threads when possible
 
-```html
-<!-- UMD build -->
-<script src="https://unpkg.com/@mcp/core@latest/dist/core.umd.js"></script>
-<script src="https://unpkg.com/@mcp/browser@latest/dist/browser.umd.js"></script>
+## Future Technical Directions
 
-<!-- ES Module build -->
-<script type="module">
-  import { createMcpClient } from 'https://unpkg.com/@mcp/core@latest/dist/core.esm.js';
-  import { createBrowserContextProvider } from 'https://unpkg.com/@mcp/browser@latest/dist/browser.esm.js';
-</script>
-```
+Planned technical enhancements:
+
+- **WebAssembly**: For performance-intensive operations
+- **Service Workers**: For offline support and caching
+- **Server-Side Rendering Support**: For SSR applications
+- **Framework-Specific Integrations**: For React, Vue, Angular, etc.
+- **Mobile Browser Support**: For mobile web applications
+- **Context Compression**: For efficient context transmission
+- **Machine Learning**: For intelligent context filtering and prioritization

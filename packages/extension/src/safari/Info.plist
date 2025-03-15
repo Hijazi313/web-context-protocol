@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Author</key>
+    <string>MCP Team</string>
+    <key>Builder Version</key>
+    <string>14.1.2</string>
+    <key>CFBundleDisplayName</key>
+    <string>Model Context Protocol</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.mcp.extension</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>Chrome</key>
+    <dict>
+        <key>Database Quota</key>
+        <real>10485760</real>
+        <key>Global Page</key>
+        <string>background.html</string>
+        <key>Popovers</key>
+        <array>
+            <dict>
+                <key>Filename</key>
+                <string>popup.html</string>
+                <key>Height</key>
+                <integer>400</integer>
+                <key>Identifier</key>
+                <string>mcpPopover</string>
+                <key>Width</key>
+                <string>320</string>
+            </dict>
+        </array>
+        <key>Toolbar Items</key>
+        <array>
+            <dict>
+                <key>Identifier</key>
+                <string>mcpButton</string>
+                <key>Image</key>
+                <string>icons/icon-32.png</string>
+                <key>Label</key>
+                <string>MCP</string>
+                <key>Popover</key>
+                <string>mcpPopover</string>
+                <key>Tool Tip</key>
+                <string>Model Context Protocol</string>
+            </dict>
+        </array>
+    </dict>
+    <key>Content</key>
+    <dict>
+        <key>Scripts</key>
+        <dict>
+            <key>End</key>
+            <array>
+                <string>content/content-script.js</string>
+            </array>
+        </dict>
+        <key>Stylesheets</key>
+        <array>
+            <string>content/content-styles.css</string>
+        </array>
+    </dict>
+    <key>Description</key>
+    <string>Browser extension for the Model Context Protocol</string>
+    <key>DeveloperIdentifier</key>
+    <string>0000000000</string>
+    <key>ExtensionInfoDictionaryVersion</key>
+    <string>1.0</string>
+    <key>Permissions</key>
+    <dict>
+        <key>Website Access</key>
+        <dict>
+            <key>Include Secure Pages</key>
+            <true/>
+            <key>Level</key>
+            <string>All</string>
+        </dict>
+    </dict>
+    <key>Website</key>
+    <string>https://github.com/example/mcp</string>
+</dict>
+</plist> 

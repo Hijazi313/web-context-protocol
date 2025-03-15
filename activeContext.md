@@ -61,3 +61,40 @@ We are currently in the planning phase of the Model Context Protocol (MCP) proje
 3. Implement proof-of-concept for DOM observation with privacy filtering
 4. Develop initial Chrome extension skeleton
 5. Create first framework adapter (React)
+
+## Current Project: Website Audit Tool
+
+We've implemented a comprehensive website auditing tool that leverages the Model Context Protocol (MCP) to analyze websites and generate detailed reports. This tool demonstrates how MCP can be used to capture and analyze website context for practical applications.
+
+### Key Features
+
+- Accessibility analysis against WCAG guidelines
+- Performance metrics for loading times and resource usage
+- SEO analysis for meta tags and content structure
+- Security assessment for potential vulnerabilities
+- Privacy compliance checking for tracking scripts and cookies
+- Responsive design testing across different screen sizes
+- Content quality analysis for readability and structure
+
+### Implementation Status
+
+- Basic application structure is complete
+- UI components for all pages are implemented
+- Context acquisition using MCP is working
+- Analyzer framework with accessibility analyzer is implemented
+- Report generation and visualization is functional
+- Settings management for configuring preferences is in place
+
+### Current Focus
+
+- Implementing additional analyzers for other audit categories
+- Enhancing the report visualization with more interactive charts
+- Adding authentication for saving and comparing reports
+- Supporting batch processing for multiple pages or sites
+
+### Known Issues
+
+- Currently using mock data since we don't have a real MCP implementation
+- Some UI components need refinement for better user experience
+- Need to implement error handling for failed audits
+- Performance optimization for large websites is needed
